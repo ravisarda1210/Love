@@ -32,9 +32,25 @@ intro.addEventListener("click", () => {
 // ❌ NO CLICK → move + YES grows
 noBtn.addEventListener("click", () => {
 
-  let x = Math.random() * 200 - 100;
-  let y = Math.random() * 200 - 100;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  const margin = 20;   // distance from screen edges
+
+  const maxX = window.innerWidth - noBtn.offsetWidth - margin;
+  const maxY = window.innerHeight - noBtn.offsetHeight - margin;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.position = "fixed";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  yesSize += 0.25;
+  yesBtn.style.transform = `scale(${yesSize})`;
+
+  message.innerHTML = noTexts[noCount % noTexts.length];
+  noCount++;
+});
+
 
   yesSize += 0.25;
   yesBtn.style.transform = `scale(${yesSize})`;
