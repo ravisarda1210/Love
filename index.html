@@ -3,35 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Love</title>
+  <title>Ankita ❤️</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <div class="container">
+<!-- INTRO SCREEN -->
+<div id="intro" class="intro">
+  Tap to open Ankita’s surprise ❤️
+</div>
 
-    <h1 id="title">Ankita, I fall for you more every day — will you be my Valentine, today and always? 💕</h1>
+<!-- MAIN PAGE -->
+<div id="main" class="hidden">
 
-    // <!-- 💏 CARTOON GIF (ALWAYS VISIBLE) -->
-    // <img id="cartoon" src="https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif">
+  <!-- teasing msg -->
+  <div id="tease" class="tease"></div>
 
-      <div class="gif-container">
-            <img id="cat-gif" src="https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif" alt="cute character">
-        </div>
-    
-    <div class="buttons">
-      <button id="yes">YES</button>
-      <button id="no">NO</button>
-    </div>
+  <!-- title -->
+  <h1 id="title">
+    Ankita, I fall for you more every day — will you be my Valentine, today and always? 💕
+  </h1>
 
-    <!-- teasing text -->
-    <div id="message"></div>
-
+  <!-- gif -->
+  <div class="gif-container">
+    <img id="cat-gif"
+      src="https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif"
+      alt="cute character">
   </div>
 
-  <!-- fireworks library -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script src="script.js"></script>
+  <!-- buttons -->
+  <div class="buttons">
+    <button id="yes">YES</button>
+    <button id="no">NO</button>
+  </div>
+
+</div>
+
+<!-- music -->
+<audio id="bgMusic" src="music/song.mp3"></audio>
+
+<!-- fireworks -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script src="script.js"></script>
 
 </body>
 </html>
