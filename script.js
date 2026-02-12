@@ -21,10 +21,19 @@ let yesSize = 1;
 
 
 // ❤️ intro click
+// intro.addEventListener("click", () => {
+ // intro.classList.add("hidden");
+ // main.classList.remove("hidden");
+ // music.play();
+// });
 intro.addEventListener("click", () => {
-  intro.classList.add("hidden");
-  main.classList.remove("hidden");
   music.play();
+
+  // hide intro completely
+  intro.style.display = "none";
+
+  // force show main
+  main.style.display = "block";
 });
 
 
