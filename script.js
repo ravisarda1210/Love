@@ -49,19 +49,22 @@ yesBtn.addEventListener("click", () => {
 
   document.querySelector(".buttons").style.display = "none";
   message.innerHTML = "";
-
   title.innerHTML = "You made me the happiest person alive on this planet 💖";
 
-  // kissing gif
+  // 💏 Create fixed celebration gif
   const kissGif = document.createElement("img");
   kissGif.src = "https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif";
+
+  kissGif.style.position = "fixed";
+  kissGif.style.left = "50%";
+  kissGif.style.bottom = "30px";
+  kissGif.style.transform = "translateX(-50%)";
   kissGif.style.width = "260px";
-  kissGif.style.marginTop = "20px";
+  kissGif.style.zIndex = "99999";
 
-  visual.innerHTML = "";
-  visual.appendChild(kissGif);
+  document.body.appendChild(kissGif);
 
-  // fireworks forever
+  // 🎆 fireworks forever
   setInterval(() => {
     confetti({
       particleCount: 150,
