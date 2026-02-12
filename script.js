@@ -51,11 +51,14 @@ yesBtn.addEventListener("click", () => {
 
   title.innerHTML = "You made me the happiest person alive on this planet 💖";
 
-  // show kissing cartoon
-  visual.innerHTML = `
-    <img src="https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif"
-    style="width:220px; margin-top:20px;">
-  `;
+  // create kissing gif
+  const kissGif = document.createElement("img");
+  kissGif.src = "https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif";
+  kissGif.style.width = "220px";
+  kissGif.style.marginTop = "20px";
+
+  visual.innerHTML = "";
+  visual.appendChild(kissGif);
 
   // fireworks continuously
   setInterval(() => {
