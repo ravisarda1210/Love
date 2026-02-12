@@ -94,3 +94,23 @@ button{
   font-size:22px;
   padding:20px;
 }
+
+
+#message{
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: #c9184a;
+  z-index: 5000;
+  min-height: 30px;
+}
+
+/* make buttons area safe */
+.buttons{
+  margin-top: 40px;
+}
