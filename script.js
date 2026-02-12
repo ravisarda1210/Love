@@ -46,15 +46,17 @@ noBtn.addEventListener("click", () => {
   yesSize += 0.15;
   yesBtn.style.transform = `scale(${yesSize})`;
 
-  // move but stay visible & avoid yes
-  const maxX = window.innerWidth - noBtn.offsetWidth - 10;
-  const maxY = window.innerHeight - noBtn.offsetHeight - 10;
+// move NO but keep inside the screen
+const margin = 10;
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
+const maxX = window.innerWidth - noBtn.offsetWidth - margin;
+const maxY = window.innerHeight - noBtn.offsetHeight - margin;
 
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+const x = Math.random() * maxX;
+const y = Math.random() * maxY;
+
+noBtn.style.left = x + "px";
+noBtn.style.top = y + "px";
 });
 
 
