@@ -65,22 +65,40 @@ yesBtn.addEventListener("click", () => {
 
   document.querySelector(".buttons").style.display = "none";
   message.innerHTML = "";
+
   title.innerHTML = "You made me the happiest person alive on this planet 💖";
 
-  // 💏 Create fixed celebration gif
+  // 💏 fixed kiss gif
   const kissGif = document.createElement("img");
   kissGif.src = "https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif";
 
   kissGif.style.position = "fixed";
   kissGif.style.left = "50%";
-  kissGif.style.bottom = "30px";
+  kissGif.style.bottom = "120px";
   kissGif.style.transform = "translateX(-50%)";
-  kissGif.style.width = "260px";
-  kissGif.style.zIndex = "99999";
+  kissGif.style.width = "240px";
+  kissGif.style.zIndex = "9999";
 
   document.body.appendChild(kissGif);
 
-  // 🎆 fireworks forever
+
+  // ❤️ FINAL TEXT
+  const finalMsg = document.createElement("div");
+  finalMsg.innerHTML = "I LOVE YOU ❤️<br>Always yours<br>Ravss";
+  finalMsg.style.position = "fixed";
+  finalMsg.style.bottom = "40px";
+  finalMsg.style.left = "50%";
+  finalMsg.style.transform = "translateX(-50%)";
+  finalMsg.style.fontSize = "22px";
+  finalMsg.style.fontWeight = "900";
+  finalMsg.style.textAlign = "center";
+  finalMsg.style.color = "#c9184a";
+  finalMsg.style.zIndex = "9999";
+
+  document.body.appendChild(finalMsg);
+
+
+  // 🎆 fireworks
   setInterval(() => {
     confetti({
       particleCount: 150,
