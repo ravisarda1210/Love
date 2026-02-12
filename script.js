@@ -7,7 +7,6 @@ const message = document.getElementById("message");
 const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
 const title = document.getElementById("main-title");
-const visual = document.getElementById("visual-area");
 
 let yesSize = 1;
 let noCount = 0;
@@ -21,7 +20,7 @@ let noTexts = [
 ];
 
 
-// ❤️ INTRO TAP → start everything
+// ❤️ intro click
 intro.addEventListener("click", () => {
   intro.style.opacity = "0";
   setTimeout(()=> intro.style.display = "none", 500);
@@ -29,10 +28,10 @@ intro.addEventListener("click", () => {
 });
 
 
-// ❌ NO CLICK → move + YES grows
-noBtn.addEventListener("click", () => {
+// 😈 NO escapes (mobile friendly)
+function escapeNo(){
 
-  const margin = 20;   // distance from screen edges
+  const margin = 10;
 
   const maxX = window.innerWidth - noBtn.offsetWidth - margin;
   const maxY = window.innerHeight - noBtn.offsetHeight - margin;
@@ -49,40 +48,31 @@ noBtn.addEventListener("click", () => {
 
   message.innerHTML = noTexts[noCount % noTexts.length];
   noCount++;
-});
+}
+
+noBtn.addEventListener("mouseover", escapeNo);
+noBtn.addEventListener("touchstart", escapeNo);
 
 
-  yesSize += 0.25;
-  yesBtn.style.transform = `scale(${yesSize})`;
-
-  message.innerHTML = noTexts[noCount % noTexts.length];
-  noCount++;
-});
-
-
-// ✅ YES CLICK → MOVIE ENDING
+// ✅ YES → celebration
 yesBtn.addEventListener("click", () => {
 
   document.querySelector(".buttons").style.display = "none";
   message.innerHTML = "";
-
   title.innerHTML = "You made me the happiest person alive on this planet 💖";
 
-  // 💏 fixed kiss gif
+  // 💏 GIF guaranteed
   const kissGif = document.createElement("img");
   kissGif.src = "https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif";
-
   kissGif.style.position = "fixed";
   kissGif.style.left = "50%";
   kissGif.style.bottom = "120px";
   kissGif.style.transform = "translateX(-50%)";
   kissGif.style.width = "240px";
   kissGif.style.zIndex = "9999";
-
   document.body.appendChild(kissGif);
 
-
-  // ❤️ FINAL TEXT
+  // ❤️ final text
   const finalMsg = document.createElement("div");
   finalMsg.innerHTML = "I LOVE YOU ❤️<br>Always yours<br>Ravss";
   finalMsg.style.position = "fixed";
@@ -94,9 +84,7 @@ yesBtn.addEventListener("click", () => {
   finalMsg.style.textAlign = "center";
   finalMsg.style.color = "#c9184a";
   finalMsg.style.zIndex = "9999";
-
   document.body.appendChild(finalMsg);
-
 
   // 🎆 fireworks
   setInterval(() => {
