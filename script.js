@@ -41,16 +41,16 @@ yesBtn.addEventListener("click", () => {
 
   // ❤️ final text
   const text = document.createElement("div");
-  text.innerHTML = "I LOVE YOU ❤️<br>Always yours";
+  text.innerHTML = "I LOVE YOU ❤️<br>Always yours Ravss";
   text.className = "finalText";
   document.body.appendChild(text);
 
   // 🔄 restart
-  const restart = document.createElement("div");
-  restart.innerHTML = "🔄";
-  restart.className = "restart";
-  restart.onclick = () => location.reload();
-  document.body.appendChild(restart);
+//  const restart = document.createElement("div");
+  // restart.innerHTML = "🔄";
+  // restart.className = "restart";
+  // restart.onclick = () => location.reload();
+  // document.body.appendChild(restart);
 
   // 🎆 fireworks
   setInterval(() => {
