@@ -1,3 +1,81 @@
+
+body{
+  margin:0;
+  font-family:'Nunito',sans-serif;
+  text-align:center;
+  background:linear-gradient(135deg,#ff4d6d,#ff8fab);
+  color:white;
+  overflow:hidden;
+}
+
+.container{
+  margin-top:60px;
+  padding:20px;
+}
+
+h1{
+  font-size:1.8rem;
+}
+
+.gif{
+  width:200px;
+  max-width:80%;
+  margin:15px 0;
+}
+
+.buttons{
+  margin-top:10px;
+}
+
+button{
+  padding:10px 18px;
+  font-size:1rem;
+  border:none;
+  border-radius:25px;
+  margin:5px;
+  font-weight:bold;
+}
+
+#yes{
+  background:white;
+  color:#ff4d6d;
+}
+
+#no{
+  background:#333;
+  color:white;
+  position:relative;
+}
+
+#message{
+  margin-top:15px;
+  font-weight:bold;
+}
+
+/* floating hearts */
+.hearts::before{
+  content:"❤️ ❤️ ❤️ ❤️ ❤️ ❤️";
+  position:fixed;
+  width:100%;
+  animation:float 10s linear infinite;
+  opacity:0.25;
+  font-size:24px;
+}
+
+@keyframes float{
+  from{transform:translateY(100%);}
+  to{transform:translateY(-120%);}
+}
+
+#musicBtn{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  border-radius:50%;
+  width:45px;
+  height:45px;
+}
+
 #intro{
   position: fixed;
   inset: 0;
