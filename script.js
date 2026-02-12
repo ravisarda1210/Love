@@ -20,7 +20,7 @@ let noTexts = [
 ];
 
 
-// 🎵 Start music on first interaction anywhere
+// 🎵 Start music on first click anywhere
 function startMusicOnce(){
   music.play().catch(()=>{});
   document.removeEventListener("click", startMusicOnce);
@@ -43,7 +43,7 @@ noBtn.addEventListener("click", () => {
 });
 
 
-// ✅ YES CLICK → MOVIE ENDING
+// ✅ YES CLICK → DRAMATIC CELEBRATION
 yesBtn.addEventListener("click", () => {
 
   document.querySelector(".buttons").style.display = "none";
@@ -51,13 +51,13 @@ yesBtn.addEventListener("click", () => {
 
   title.innerHTML = "You made me the happiest person alive on this planet 💖";
 
-  // show kissing gif
+  // show kissing cartoon
   visual.innerHTML = `
-    <img src="https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif" 
+    <img src="https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif"
     style="width:220px; margin-top:20px;">
   `;
 
-  // fireworks forever
+  // fireworks continuously
   setInterval(() => {
     confetti({
       particleCount: 150,
@@ -66,25 +66,10 @@ yesBtn.addEventListener("click", () => {
     });
   }, 700);
 
-
-  // after 3 sec → show memory photo
-  setTimeout(() => {
-    visual.innerHTML = `
-      <img src="images/memory.jpg"
-      style="
-        width:260px;
-        max-width:85%;
-        border-radius:15px;
-        margin-top:20px;
-        box-shadow:0 0 20px rgba(255,255,255,0.9);
-      ">
-    `;
-  }, 3000);
-
 });
 
 
-// 🔊 music button
+// 🔊 music toggle
 musicBtn.addEventListener("click",()=>{
   if(music.paused) music.play();
   else music.pause();
