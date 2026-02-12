@@ -5,7 +5,8 @@ const noBtn = document.getElementById("no");
 const message = document.getElementById("message");
 const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
-const title = document.querySelector("h1");
+const title = document.getElementById("main-title");
+const visual = document.getElementById("visual-area");
 
 let yesSize = 1;
 let noCount = 0;
@@ -19,7 +20,7 @@ let noTexts = [
 ];
 
 
-// 🎵 start music on first interaction
+// 🎵 Start music on first interaction anywhere
 function startMusicOnce(){
   music.play().catch(()=>{});
   document.removeEventListener("click", startMusicOnce);
@@ -27,8 +28,9 @@ function startMusicOnce(){
 document.addEventListener("click", startMusicOnce);
 
 
-// ❌ NO → move + YES grows
+// ❌ NO CLICK → move + YES grows
 noBtn.addEventListener("click", () => {
+
   let x = Math.random() * 200 - 100;
   let y = Math.random() * 200 - 100;
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
@@ -41,21 +43,19 @@ noBtn.addEventListener("click", () => {
 });
 
 
-// ✅ YES → MOVIE CLIMAX
+// ✅ YES CLICK → MOVIE ENDING
 yesBtn.addEventListener("click", () => {
 
   document.querySelector(".buttons").style.display = "none";
+  message.innerHTML = "";
 
   title.innerHTML = "You made me the happiest person alive on this planet 💖";
 
-  message.innerHTML = "";
-
-  // show cartoon love gif
-  const gif = document.createElement("img");
-  gif.src = "https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif";
-  gif.style.width = "220px";
-  gif.style.marginTop = "20px";
-  document.querySelector(".container").appendChild(gif);
+  // show kissing gif
+  visual.innerHTML = `
+    <img src="https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif" 
+    style="width:220px; margin-top:20px;">
+  `;
 
   // fireworks forever
   setInterval(() => {
@@ -67,19 +67,18 @@ yesBtn.addEventListener("click", () => {
   }, 700);
 
 
-  // after 3 sec → show memory
+  // after 3 sec → show memory photo
   setTimeout(() => {
-    gif.remove();
-
-    const memory = document.createElement("img");
-    memory.src = "images/memory.jpg";
-    memory.style.width = "260px";
-    memory.style.maxWidth = "85%";
-    memory.style.borderRadius = "15px";
-    memory.style.marginTop = "20px";
-    memory.style.boxShadow = "0 0 20px rgba(255,255,255,0.8)";
-
-    document.querySelector(".container").appendChild(memory);
+    visual.innerHTML = `
+      <img src="images/memory.jpg"
+      style="
+        width:260px;
+        max-width:85%;
+        border-radius:15px;
+        margin-top:20px;
+        box-shadow:0 0 20px rgba(255,255,255,0.9);
+      ">
+    `;
   }, 3000);
 
 });
