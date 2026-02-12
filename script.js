@@ -48,19 +48,22 @@ yesBtn.addEventListener("click", () => {
 
   document.querySelector(".buttons").style.display = "none";
   message.innerHTML = "";
-
   title.innerHTML = "You made me the happiest person alive on this planet 💖";
 
-  // create kissing gif
+  // 💏 FORCE GIF ON SCREEN
   const kissGif = document.createElement("img");
   kissGif.src = "https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif";
-  kissGif.style.width = "220px";
-  kissGif.style.marginTop = "20px";
 
-  visual.innerHTML = "";
-  visual.appendChild(kissGif);
+  kissGif.style.position = "fixed";
+  kissGif.style.bottom = "20px";
+  kissGif.style.left = "50%";
+  kissGif.style.transform = "translateX(-50%)";
+  kissGif.style.width = "260px";
+  kissGif.style.zIndex = "9999";
 
-  // fireworks continuously
+  document.body.appendChild(kissGif);
+
+  // 🎆 fireworks
   setInterval(() => {
     confetti({
       particleCount: 150,
@@ -70,6 +73,7 @@ yesBtn.addEventListener("click", () => {
   }, 700);
 
 });
+
 
 
 // 🔊 music toggle
