@@ -1,119 +1,63 @@
-window.addEventListener("DOMContentLoaded", () => {
-
-const intro = document.getElementById("intro");
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
 const message = document.getElementById("message");
-const music = document.getElementById("music");
-const musicBtn = document.getElementById("musicBtn");
-const title = document.getElementById("main-title");
-const celebration = document.getElementById("celebration");
+const title = document.getElementById("title");
 
-let yesSize = 1;
-let noCount = 0;
-
-let noTexts = [
-  "No? Really? 🥺",
-  "Think again ❤️",
-  "Wrong answer 😜",
-  "Try again!",
-  "YES is waiting 😍"
+// 😈 evil messages
+const texts = [
+  "Are you sure? 😏",
+  "Think again... 🙈",
+  "Last chance! ❤️",
+  "You can't escape 😈",
+  "Say YES already 💕"
 ];
 
+let index = 0;
 
-// intro tap
-intro.addEventListener("click", () => {
-  intro.style.opacity = "0";
-  setTimeout(()=> intro.style.display = "none", 500);
-  music.play().catch(()=>{});
-});
+// ❌ NO button moves but stays on screen
+noBtn.addEventListener("click", () => {
+  message.innerHTML = texts[index % texts.length];
+  index++;
 
+  const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+  const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
-// 😈 escape but avoid YES
-function escapeNo(){
-
-  const margin = 20;
-
-  const yesRect = yesBtn.getBoundingClientRect();
-
-  let x, y;
-  let tries = 0;
-
-  do {
-    const maxX = window.innerWidth - noBtn.offsetWidth - margin;
-    const maxY = window.innerHeight - noBtn.offsetHeight - margin;
-
-    x = Math.random() * maxX;
-    y = Math.random() * maxY;
-
-    tries++;
-
-  } while (
-    x > yesRect.left - 80 &&
-    x < yesRect.right + 80 &&
-    y > yesRect.top - 80 &&
-    y < yesRect.bottom + 80 &&
-    tries < 50
-  );
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
 
   noBtn.style.position = "fixed";
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
-
-  yesSize += 0.25;
-  yesBtn.style.transform = `scale(${yesSize})`;
-
-  message.innerHTML = noTexts[noCount % noTexts.length];
-  noCount++;
-}
-
-noBtn.addEventListener("mouseover", escapeNo);
-noBtn.addEventListener("touchstart", escapeNo);
+});
 
 
 // ❤️ YES
 yesBtn.addEventListener("click", () => {
 
-  document.querySelector(".buttons").style.display = "none";
+  title.innerHTML = "You made me the happiest person alive 💖";
   message.innerHTML = "";
-  title.innerHTML = "You made me the happiest person alive on this planet 💖";
 
-  // GIF
-  const gif = document.createElement("img");
-  gif.src = "https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif";
-  celebration.appendChild(gif);
+  document.querySelector(".buttons").style.display = "none";
 
-  // final line
+  // ❤️ final text
   const text = document.createElement("div");
-  text.className = "final";
   text.innerHTML = "I LOVE YOU ❤️<br>Always yours";
-  celebration.appendChild(text);
+  text.className = "finalText";
+  document.body.appendChild(text);
 
-  // restart icon
+  // 🔄 restart
   const restart = document.createElement("div");
   restart.innerHTML = "🔄";
-  restart.style.fontSize = "22px";
-  restart.style.marginTop = "8px";
-  restart.style.cursor = "pointer";
+  restart.className = "restart";
   restart.onclick = () => location.reload();
-  celebration.appendChild(restart);
+  document.body.appendChild(restart);
 
-  // fireworks
+  // 🎆 fireworks
   setInterval(() => {
     confetti({
-      particleCount: 150,
+      particleCount: 120,
       spread: 70,
       origin: { y: 0.6 }
     });
   }, 700);
-
-});
-
-
-// music toggle
-musicBtn.addEventListener("click",()=>{
-  if(music.paused) music.play();
-  else music.pause();
-});
-
 });
