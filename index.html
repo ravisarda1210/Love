@@ -1,40 +1,38 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Ankita ❤️</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine? 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=eUbdhTMS0c1kaO1eQzGgLsGIvUnGpfgEEew6WF_wpU4q2TIsbjUM94ZNilw64g7t59jA5a3ec6eBxnQ84yz5iw" charset="UTF-8"></script></head>
 <body>
+    <div class="hearts-bg"></div>
 
-  <div class="start-screen" id="startScreen">
-      <h1>Hi Ankita ❤️</h1>
-      <p>I made something special for you.</p>
-      <button onclick="startSurprise()">Tap to open</button>
-  </div>
+    <div class="container">
+        <h1>Will you be my Valentine? 💕</h1>
 
-  <div class="hearts-bg"></div>
+        <div class="gif-container">
+            <img id="cat-gif" src="https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif" alt="cute character">
+        </div>
 
-  <div class="container yes-container" id="mainContent">
-      <h1 class="yes-title">I knew you would say yes! 🎉</h1>
+        <div class="buttons">
+            <button id="yes-btn" onclick="handleYesClick()">Yes</button>
+            <button id="no-btn" onclick="handleNoClick()">No</button>
+        </div>
+        <div id="tease-toast"></div>
+    </div>
 
-      <div class="gif-container">
-          <img src="https://media.tenor.com/eNHbizSfVb0AAAAj/lovemode-cute.gif" alt="celebrating">
-      </div>
+    <audio id="bg-music" loop autoplay muted>
+        <source src="music/beabadoobee - Glue Song (Lyrics).mp3" type="audio/mpeg">
+    </audio>
 
-      <p class="proposal">Ankita, I fall for you more every day — will you be my Valentine, today and always?</p>
-  </div>
+    <button id="music-toggle" onclick="toggleMusic()" title="Toggle music">🔊</button>
 
-  <audio id="bg-music" loop>
-      <source src="music/song.mp3" type="audio/mpeg">
-  </audio>
-
-  <button id="music-toggle" onclick="toggleMusic()">🔊</button>
-
-<script src="yes-script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+
