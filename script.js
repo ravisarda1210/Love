@@ -7,6 +7,7 @@ const message = document.getElementById("message");
 const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
 const title = document.getElementById("main-title");
+const celebration = document.getElementById("celebration");
 
 let yesSize = 1;
 let noCount = 0;
@@ -20,7 +21,7 @@ let noTexts = [
 ];
 
 
-// ❤️ intro click
+// intro tap
 intro.addEventListener("click", () => {
   intro.style.opacity = "0";
   setTimeout(()=> intro.style.display = "none", 500);
@@ -28,16 +29,32 @@ intro.addEventListener("click", () => {
 });
 
 
-// 😈 NO escapes (mobile friendly)
+// 😈 escape but avoid YES
 function escapeNo(){
 
-  const margin = 10;
+  const margin = 20;
 
-  const maxX = window.innerWidth - noBtn.offsetWidth - margin;
-  const maxY = window.innerHeight - noBtn.offsetHeight - margin;
+  const yesRect = yesBtn.getBoundingClientRect();
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
+  let x, y;
+  let tries = 0;
+
+  do {
+    const maxX = window.innerWidth - noBtn.offsetWidth - margin;
+    const maxY = window.innerHeight - noBtn.offsetHeight - margin;
+
+    x = Math.random() * maxX;
+    y = Math.random() * maxY;
+
+    tries++;
+
+  } while (
+    x > yesRect.left - 80 &&
+    x < yesRect.right + 80 &&
+    y > yesRect.top - 80 &&
+    y < yesRect.bottom + 80 &&
+    tries < 50
+  );
 
   noBtn.style.position = "fixed";
   noBtn.style.left = x + "px";
@@ -54,39 +71,34 @@ noBtn.addEventListener("mouseover", escapeNo);
 noBtn.addEventListener("touchstart", escapeNo);
 
 
-// ✅ YES → celebration
+// ❤️ YES
 yesBtn.addEventListener("click", () => {
 
   document.querySelector(".buttons").style.display = "none";
   message.innerHTML = "";
   title.innerHTML = "You made me the happiest person alive on this planet 💖";
 
-  // 💏 GIF guaranteed
-  const kissGif = document.createElement("img");
-  kissGif.src = "https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif";
-  kissGif.style.position = "fixed";
-  kissGif.style.left = "50%";
-  kissGif.style.bottom = "120px";
-  kissGif.style.transform = "translateX(-50%)";
-  kissGif.style.width = "240px";
-  kissGif.style.zIndex = "9999";
-  document.body.appendChild(kissGif);
+  // GIF
+  const gif = document.createElement("img");
+  gif.src = "https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif";
+  celebration.appendChild(gif);
 
-  // ❤️ final text
-  const finalMsg = document.createElement("div");
-  finalMsg.innerHTML = "I LOVE YOU ❤️<br>Always yours<br>Ravss";
-  finalMsg.style.position = "fixed";
-  finalMsg.style.bottom = "40px";
-  finalMsg.style.left = "50%";
-  finalMsg.style.transform = "translateX(-50%)";
-  finalMsg.style.fontSize = "22px";
-  finalMsg.style.fontWeight = "900";
-  finalMsg.style.textAlign = "center";
-  finalMsg.style.color = "#c9184a";
-  finalMsg.style.zIndex = "9999";
-  document.body.appendChild(finalMsg);
+  // final line
+  const text = document.createElement("div");
+  text.className = "final";
+  text.innerHTML = "I LOVE YOU ❤️<br>Always yours";
+  celebration.appendChild(text);
 
-  // 🎆 fireworks
+  // restart icon
+  const restart = document.createElement("div");
+  restart.innerHTML = "🔄";
+  restart.style.fontSize = "22px";
+  restart.style.marginTop = "8px";
+  restart.style.cursor = "pointer";
+  restart.onclick = () => location.reload();
+  celebration.appendChild(restart);
+
+  // fireworks
   setInterval(() => {
     confetti({
       particleCount: 150,
@@ -98,7 +110,7 @@ yesBtn.addEventListener("click", () => {
 });
 
 
-// 🔊 music toggle
+// music toggle
 musicBtn.addEventListener("click",()=>{
   if(music.paused) music.play();
   else music.pause();
