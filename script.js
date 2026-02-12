@@ -1,5 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
 
+const intro = document.getElementById("intro");
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
 const message = document.getElementById("message");
@@ -20,12 +21,12 @@ let noTexts = [
 ];
 
 
-// 🎵 Start music on first click anywhere
-function startMusicOnce(){
+// ❤️ INTRO TAP → start everything
+intro.addEventListener("click", () => {
+  intro.style.opacity = "0";
+  setTimeout(()=> intro.style.display = "none", 500);
   music.play().catch(()=>{});
-  document.removeEventListener("click", startMusicOnce);
-}
-document.addEventListener("click", startMusicOnce);
+});
 
 
 // ❌ NO CLICK → move + YES grows
@@ -43,27 +44,24 @@ noBtn.addEventListener("click", () => {
 });
 
 
-// ✅ YES CLICK → DRAMATIC CELEBRATION
+// ✅ YES CLICK → MOVIE ENDING
 yesBtn.addEventListener("click", () => {
 
   document.querySelector(".buttons").style.display = "none";
   message.innerHTML = "";
+
   title.innerHTML = "You made me the happiest person alive on this planet 💖";
 
-  // 💏 FORCE GIF ON SCREEN
+  // kissing gif
   const kissGif = document.createElement("img");
   kissGif.src = "https://media.tenor.com/bCfpwMjfAi0AAAAj/cute-love.gif";
-
-  kissGif.style.position = "fixed";
-  kissGif.style.bottom = "20px";
-  kissGif.style.left = "50%";
-  kissGif.style.transform = "translateX(-50%)";
   kissGif.style.width = "260px";
-  kissGif.style.zIndex = "9999";
+  kissGif.style.marginTop = "20px";
 
-  document.body.appendChild(kissGif);
+  visual.innerHTML = "";
+  visual.appendChild(kissGif);
 
-  // 🎆 fireworks
+  // fireworks forever
   setInterval(() => {
     confetti({
       particleCount: 150,
@@ -73,7 +71,6 @@ yesBtn.addEventListener("click", () => {
   }, 700);
 
 });
-
 
 
 // 🔊 music toggle
