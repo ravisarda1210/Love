@@ -12,11 +12,12 @@ const gif = document.getElementById("cat-gif");
 
 // SAFE GIF LINKS (stable)
 const normalGif = "https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif";
-const cryGif = "https://media1.tenor.com/m/97Zio3BdYvQAAAAC/fluent-emoji.gif";
+const cryGif = "https://tenor.com/view/puso-heart-pusong-sugatan-biyak-broken-heart-gif-10313340180720529387.gif";
+// const cryGif = "https://media1.tenor.com/m/97Zio3BdYvQAAAAC/fluent-emoji.gif";
 // const cryGif = "https://tenor.com/view/fluent-emoji-microsoft-sad-guilty-gif-17849562627233899252.gif";
-const loveGif = "https://media1.tenor.com/m/FBdUdiVOa2oAAAAC/love.gif";
+// const loveGif = "https://media1.tenor.com/m/FBdUdiVOa2oAAAAC/love.gif";
 // const loveGif = "https://tenor.com/view/love-gif-1447718671631674218.gif";
-
+const loveGif = "https://media1.tenor.com/m/5GVsInsrd_YAAAAC/love-you-emojis.gif";
 // const cryGif = "https://media.tenor.com/x8v1oNUOmg4AAAAC/crying-cat-cat.gif";
 // const loveGif = "https://media.tenor.com/joYxwXh2Eb8AAAAi/love.gif";
 
