@@ -151,3 +151,8 @@ button{
     opacity:0;
   }
 }
+
+
+#cat-gif{
+  mix-blend-mode: multiply;
+}
