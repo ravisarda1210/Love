@@ -1,14 +1,10 @@
 body{
   margin:0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family:'Segoe UI', sans-serif;
   background: linear-gradient(135deg,#ffafcc,#ffc8dd);
   text-align:center;
   overflow:hidden;
   color:#7b2cbf;
-}
-
-.hidden{
-  display:none;
 }
 
 /* intro */
@@ -24,10 +20,10 @@ body{
   padding:20px;
 }
 
-/* teasing */
+/* tease bubble */
 .tease{
   position:fixed;
-  bottom:110px;
+  bottom:120px;
   left:50%;
   transform:translateX(-50%);
   font-size:20px;
@@ -42,9 +38,9 @@ body{
   max-width:85%;
   text-align:center;
   animation: heartbeat 1s infinite;
+  z-index:5;
 }
 
-/* bubble tail */
 .tease::after{
   content:"";
   position:absolute;
@@ -56,13 +52,38 @@ body{
   border-color:white transparent transparent transparent;
 }
 
-/* heartbeat */
 @keyframes heartbeat{
   0%{ transform:translateX(-50%) scale(1); }
   25%{ transform:translateX(-50%) scale(1.05); }
   50%{ transform:translateX(-50%) scale(1); }
   75%{ transform:translateX(-50%) scale(1.05); }
   100%{ transform:translateX(-50%) scale(1); }
+}
+
+/* ANKITA animation */
+.name{
+  font-weight:900;
+  font-size:28px;
+  background: linear-gradient(90deg,#ff4d6d,#c9184a,#ff4d6d);
+  background-size:200% auto;
+  color:#fff;
+  padding:2px 10px;
+  border-radius:10px;
+
+  animation:
+    shimmer 3s linear infinite,
+    pulse 1.2s ease-in-out infinite;
+
+  box-shadow:0 0 10px #ff4d6d, 0 0 20px #ff4d6d;
+}
+
+@keyframes shimmer{
+  to { background-position:200% center; }
+}
+
+@keyframes pulse{
+  0%,100%{ transform:scale(1); }
+  50%{ transform:scale(1.1); }
 }
 
 /* title */
@@ -85,12 +106,12 @@ body{
 .buttons{
   margin-top:10px;
   position:relative;
-  height:140px;      /* increased */
+  height:140px;
   width:100%;
-  max-width:400px;   /* good for mobile */
+  max-width:400px;
   margin-left:auto;
   margin-right:auto;
-  overflow:hidden;   /* important */
+  overflow:hidden;
 }
 
 button{
@@ -112,45 +133,21 @@ button{
   background:#6c757d;
   color:white;
   position:absolute;
-}
-
-/* final texts */
-.topFinal{
-  font-size:24px;
-  color:#d00000;
-  margin-top:10px;
-}
-
-.bottomFinal{
-  position:fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:20px;
-  color:#c9184a;
-  font-weight:bold;
-}
-
-
-#no{
   left:10px;
   top:10px;
 }
 
-
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.2; }
-  100% { opacity: 1; }
+/* floating hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation: floatUp linear forwards;
 }
 
-.tease{
-  animation: blink 0.8s infinite;
-}
-
-@media (max-width:480px){
-  .tease{
-    font-size:18px;
-    bottom:110px;
+@keyframes floatUp{
+  to{
+    transform: translateY(-110vh);
+    opacity:0;
   }
 }
