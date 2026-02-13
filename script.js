@@ -1,3 +1,4 @@
+const noSound = document.getElementById("noSound");
 const intro = document.getElementById("intro");
 const main = document.getElementById("main");
 const music = document.getElementById("bgMusic");
@@ -11,9 +12,14 @@ const title = document.getElementById("title");
 const lines = [
   "No? Really? 🥺",
   "Think again ❤️",
-  "Wrong answer 😜",
-  "Try again!",
-  "YES is waiting 😍"
+  "गलत जवाब 😜",
+  "My heart is fragile 💔",
+  "Are you sure about that? 😭",
+  "I will ask again…",
+  "System error! Choose YES 😌",
+  "Last warning ⚠️",
+  "You are breaking my cute heart 🥹",
+  "YES is the only correct answer 😍"
 ];
 
 let i = 0;
@@ -39,10 +45,14 @@ intro.addEventListener("click", () => {
 
 // ❌ NO button movement
 noBtn.addEventListener("click", () => {
-
+noSound.currentTime = 0;
+noSound.play();
   tease.innerHTML = lines[i % lines.length];
   i++;
-
+if(i > 5){
+  tease.style.color = "#d00000";
+  tease.style.fontSize = "22px";
+}
   yesSize += 0.15;
   yesBtn.style.transform = `scale(${yesSize})`;
 
