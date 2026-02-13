@@ -9,6 +9,13 @@ const tease = document.getElementById("tease");
 const title = document.getElementById("title");
 const gif = document.getElementById("cat-gif");
 
+
+// SAFE GIF LINKS (stable)
+const normalGif = "https://media.tenor.com/EBV7OT7ACfwAAAAj/u-u-qua-qua-u-quaa.gif";
+const cryGif = "https://media.tenor.com/x8v1oNUOmg4AAAAC/crying-cat-cat.gif";
+const loveGif = "https://media.tenor.com/joYxwXh2Eb8AAAAi/love.gif";
+
+
 const lines = [
   "No? Really? 🥺",
   "Think again ❤️",
@@ -25,14 +32,17 @@ const lines = [
 let i = 0;
 let yesSize = 1;
 
-// intro click
+
+// ❤️ intro
 intro.addEventListener("click", () => {
   music.play();
   intro.style.display = "none";
   main.style.display = "block";
+  gif.src = normalGif;
 });
 
-// NO click
+
+// ❌ NO click
 noBtn.addEventListener("click", () => {
 
   if(navigator.vibrate) navigator.vibrate(120);
@@ -46,12 +56,12 @@ noBtn.addEventListener("click", () => {
   yesSize += 0.15;
   yesBtn.style.transform = `scale(${yesSize})`;
 
-  // crying gif
+  // after 10 → crying
   if(i >= 10){
-    gif.src = "https://media.tenor.com/tzvzrzS1o7sAAAAi/crying-cat.gif";
+    gif.src = cryGif + "?v=" + new Date().getTime();  // force refresh
   }
 
-  // move within container
+  // move button
   const container = document.querySelector(".buttons");
   const margin = 10;
 
@@ -65,7 +75,8 @@ noBtn.addEventListener("click", () => {
   noBtn.style.top = y + "px";
 });
 
-// YES click
+
+// ❤️ YES click
 yesBtn.addEventListener("click", () => {
 
   tease.style.display = "none";
@@ -73,8 +84,8 @@ yesBtn.addEventListener("click", () => {
 
   title.innerHTML = "You made me the happiest person alive 💖";
 
-  // happy gif
-  gif.src = "https://media.tenor.com/joYxwXh2Eb8AAAAi/love.gif";
+  // change to love gif
+  gif.src = loveGif + "?v=" + new Date().getTime();
 
   // show names
   const love = document.createElement("div");
@@ -84,7 +95,7 @@ yesBtn.addEventListener("click", () => {
   love.innerHTML = "RAVSS ❤️ ANKITA";
   document.body.appendChild(love);
 
-  // floating hearts
+  // hearts
   setInterval(() => {
     const heart = document.createElement("div");
     heart.className = "heart";
@@ -96,3 +107,9 @@ yesBtn.addEventListener("click", () => {
     setTimeout(() => heart.remove(), 5000);
   }, 300);
 });
+
+
+// if ANY gif fails → keep normal one
+gif.onerror = () => {
+  gif.src = normalGif;
+};
