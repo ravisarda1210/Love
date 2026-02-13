@@ -120,6 +120,3 @@ gif.onerror = () => {
 };
 
 
-#cat-gif{
-  mix-blend-mode: multiply;
-}
