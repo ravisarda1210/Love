@@ -118,3 +118,8 @@ yesBtn.addEventListener("click", () => {
 gif.onerror = () => {
   gif.src = normalGif;
 };
+
+
+#cat-gif{
+  mix-blend-mode: multiply;
+}
