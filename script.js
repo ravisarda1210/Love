@@ -47,10 +47,11 @@ noBtn.addEventListener("click", () => {
   yesBtn.style.transform = `scale(${yesSize})`;
 
 // move NO but keep inside the screen
+const container = document.querySelector(".buttons");
 const margin = 10;
 
-const maxX = window.innerWidth - noBtn.offsetWidth - margin;
-const maxY = window.innerHeight - noBtn.offsetHeight - margin;
+const maxX = container.clientWidth - noBtn.offsetWidth - margin;
+const maxY = container.clientHeight - noBtn.offsetHeight - margin;
 
 const x = Math.random() * maxX;
 const y = Math.random() * maxY;
