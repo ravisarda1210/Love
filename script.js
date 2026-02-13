@@ -1,96 +1,98 @@
-const noSound = document.getElementById("noSound");
 const intro = document.getElementById("intro");
 const main = document.getElementById("main");
 const music = document.getElementById("bgMusic");
+const noSound = document.getElementById("noSound");
 
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
 const tease = document.getElementById("tease");
 const title = document.getElementById("title");
+const gif = document.getElementById("cat-gif");
 
-// teasing lines
 const lines = [
   "No? Really? 🥺",
   "Think again ❤️",
-  "गलत जवाब 😜",
-  "My heart is fragile 💔",
-  "Are you sure about that? 😭",
-  "I will ask again…",
-  "System error! Choose YES 😌",
-  "Last warning ⚠️",
-  "You are breaking my cute heart 🥹",
-  "YES is the only correct answer 😍"
+  "Wrong answer 😜",
+  "I am getting emotional 😭",
+  "Pleaseeee 🥹",
+  "Don’t do this to me 💔",
+  "Last chance 😣",
+  "You are very stubborn 😤",
+  "My heart can't take it 💘",
+  "Fine… I will cry now 😭"
 ];
 
 let i = 0;
 let yesSize = 1;
 
-
-// ❤️ intro click
-// intro.addEventListener("click", () => {
- // intro.classList.add("hidden");
- // main.classList.remove("hidden");
- // music.play();
-// });
+// intro click
 intro.addEventListener("click", () => {
   music.play();
-
-  // hide intro completely
   intro.style.display = "none";
-
-  // force show main
   main.style.display = "block";
 });
 
-
-// ❌ NO button movement
+// NO click
 noBtn.addEventListener("click", () => {
-noSound.currentTime = 0;
-noSound.play();
+
+  if(navigator.vibrate) navigator.vibrate(120);
+
+  noSound.currentTime = 0;
+  noSound.play();
+
   tease.innerHTML = lines[i % lines.length];
   i++;
-if(i > 5){
-  tease.style.color = "#d00000";
-  tease.style.fontSize = "22px";
-}
+
   yesSize += 0.15;
   yesBtn.style.transform = `scale(${yesSize})`;
 
-// move NO but keep inside the screen
-const container = document.querySelector(".buttons");
-const margin = 10;
+  // crying gif
+  if(i >= 10){
+    gif.src = "https://media.tenor.com/tzvzrzS1o7sAAAAi/crying-cat.gif";
+  }
 
-const maxX = container.clientWidth - noBtn.offsetWidth - margin;
-const maxY = container.clientHeight - noBtn.offsetHeight - margin;
+  // move within container
+  const container = document.querySelector(".buttons");
+  const margin = 10;
 
-const x = Math.random() * maxX;
-const y = Math.random() * maxY;
+  const maxX = container.clientWidth - noBtn.offsetWidth - margin;
+  const maxY = container.clientHeight - noBtn.offsetHeight - margin;
 
-noBtn.style.left = x + "px";
-noBtn.style.top = y + "px";
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
 });
 
-
-// ❤️ YES clicked
+// YES click
 yesBtn.addEventListener("click", () => {
 
-  tease.innerHTML = "";
+  tease.style.display = "none";
   document.querySelector(".buttons").style.display = "none";
 
-  title.className = "topFinal";
-  title.innerHTML = "You made me the happiest person alive on this planet 💖";
+  title.innerHTML = "You made me the happiest person alive 💖";
 
-  const bottom = document.createElement("div");
-  bottom.className = "bottomFinal";
-  bottom.innerHTML = "I LOVE YOU ❤️<br>Always yours Ravss";
-  document.body.appendChild(bottom);
+  // happy gif
+  gif.src = "https://media.tenor.com/joYxwXh2Eb8AAAAi/love.gif";
 
-  // fireworks
+  // show names
+  const love = document.createElement("div");
+  love.style.marginTop = "15px";
+  love.style.fontSize = "22px";
+  love.style.fontWeight = "bold";
+  love.innerHTML = "RAVSS ❤️ ANKITA";
+  document.body.appendChild(love);
+
+  // floating hearts
   setInterval(() => {
-    confetti({
-      particleCount: 150,
-      spread: 80,
-      origin: { y: 0.6 }
-    });
-  }, 700);
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+  }, 300);
 });
