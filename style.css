@@ -53,7 +53,12 @@ body{
 .buttons{
   margin-top:10px;
   position:relative;
-  height:80px;
+  height:140px;      /* increased */
+  width:100%;
+  max-width:400px;   /* good for mobile */
+  margin-left:auto;
+  margin-right:auto;
+  overflow:hidden;   /* important */
 }
 
 button{
